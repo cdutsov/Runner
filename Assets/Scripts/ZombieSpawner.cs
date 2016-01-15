@@ -17,8 +17,8 @@ public class ZombieSpawner : MonoBehaviour {
 	void Spawn()
     {
         float xPosition = Random.Range(PlayerController.player.transform.position.x + 15, PlayerController.player.transform.position.x + 50);
-        zombieSpawnPosition = new Vector3 (xPosition, Terrain.activeTerrain.SampleHeight(new Vector3(xPosition, 0.0f, 0.0f)) - 35.0f,0.0f);
-        Debug.Log(Terrain.activeTerrain.SampleHeight(new Vector3(xPosition, 0.0f, 0.0f))-35.0f + " - y position of spawned zombul)");
+        zombieSpawnPosition = new Vector3 (xPosition, Terrain.activeTerrain.SampleHeight(new Vector3(xPosition, 0.0f, 0.0f)) - 30.0f,0.0f);
+        Debug.Log(Terrain.activeTerrain.SampleHeight(new Vector3(xPosition, 0.0f, 0.0f))-30.0f + " - y position of spawned zombul)");
         Instantiate(zombieObject, zombieSpawnPosition, Quaternion.identity);
     }
 }

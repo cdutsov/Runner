@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 	public static PlayerController player;
 
 	private bool isGrounded = true;
+	private static float prevSpeed = 0f;
 
 	void Start ()
 	{
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+		rigidBody.interpolation = RigidbodyInterpolation.Interpolate;
 		if(Input.GetKeyUp("up")&(playerJumpBoosts!=0))
 		{
 
@@ -100,5 +102,18 @@ public class PlayerController : MonoBehaviour
 		if (collider.gameObject.tag == "Ground")
 			isGrounded = true;
 	}
-}
 
+	public float getPlayerSpeed() {
+		return rigidBody.velocity.x;
+	}
+
+	public float getPlayerAcceleration() {
+		float acceleration = (rigidBody.velocity.x - prevSpeed)/Time.deltaTime;
+		prevSpeed = rigidBody.velocity.x;
+		return acceleration;
+	}		
+
+	public Vector3 getVectorSpeed() {
+		return rigidBody.velocity;
+	}
+}
